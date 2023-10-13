@@ -92,14 +92,21 @@ function App() {
       }
       {fileName === "Choose a File" &&
       <section className="help">
-        <h2>How to use this tool</h2>
-        <ol>
-          <li>Go to this <a rel="noreferrer" href="https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_code_analyzer_scan.htm" target="_blank">Link</a>
-          </li>
-          <li>Follow the steps but <span class="emphasize">Except save as json instead of csv</span></li>
-          <li>example: <div class="code">sfdx scanner:run --format=json --outfile=CodeAnalyzerFull.json --target="./ApexClassToRunAgainst.cls" --projectdir="./"</div></li>
-          <li>Upload the saved json file at the top of this page and view the results!</li>
-        </ol>
+        <div>
+          <h2>Purpose</h2>
+          <p>The SFDX Code Analyzer scans Apex code for Documentation, Design, Best Practices, Security, Performance, Code Style, and Error Prone violations.  
+            You will need to use a seperate tool to create the file and upload it here for ease in viewing which can be done using the instructions below.</p>
+          </div>
+          <div>
+            <h2>Instructions: </h2>
+            <ol>
+              <li>Go to this <a rel="noreferrer" href="https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_code_analyzer_scan.htm" target="_blank">Link</a>
+              </li>
+              <li>Follow the steps but <span class="emphasize">Except save as json instead of csv</span></li>
+              <li>example: <div class="code">sfdx scanner:run --format=json --outfile=CodeAnalyzerFull.json --target="./ApexClassToRunAgainst.cls" --projectdir="./"</div></li>
+              <li>Upload the saved json file at the top of this page and view the results!</li>
+            </ol>
+          </div>
       </section>
       }
     </div>

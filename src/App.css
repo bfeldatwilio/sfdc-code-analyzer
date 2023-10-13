@@ -78,6 +78,7 @@ tbody > tr > td {
 }
 
 .help {
+  color: #555;
   width: 600px;
   border: solid 1px hsl(287, 100%, 50%);
   margin: auto;
@@ -87,11 +88,16 @@ tbody > tr > td {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.help > h2 {
+.help h2 {
   margin-bottom: 10px;
 }
 
-.help > ol { 
+.help p {
+  margin-bottom: 30px;
+  line-height: 1.4em;
+}
+
+.help ol { 
   margin-left: 20px;
 }
 
@@ -100,7 +106,7 @@ tbody > tr > td {
   color: hsl(287, 100%, 50%);
 }
 
-.help > ol > li {
+.help ol > li {
   margin-bottom: 10px;
 }
 
@@ -109,5 +115,6 @@ tbody > tr > td {
   font-family: monospace;
   color: white;
   padding: 5px;
+  margin-top: 5px;
 }
 
