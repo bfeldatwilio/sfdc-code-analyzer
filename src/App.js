@@ -19,6 +19,7 @@ function App() {
 
     reader.onload = function() {
       const contents = JSON.parse(reader.result);
+      console.log(contents);
       setFileName(contents[0].fileName.split('/').pop());
       setCategories(createCategories(contents[0].violations));
     };
@@ -50,41 +51,57 @@ function App() {
         }
         </div>
       </section>
-      <section className="categories">
-        {categories.map((category, index) => {
-            return ( 
-              activeCategory && 
-              <div onClick={() => setActiveCategory(category)} key={index} className={activeCategory.name === category.name? 'active':''}>
-                {category.name} ({category.count})
-            </div>)
-        })}
+      {fileName !== "Choose a File" &&
+      <div>
+        <section className="categories">
+          {categories.map((category, index) => {
+              return ( 
+                activeCategory && 
+                <div onClick={() => setActiveCategory(category)} key={index} className={activeCategory.name === category.name? 'active':''}>
+                  {category.name} ({category.count})
+              </div>)
+          })}
+        </section>
+        <section className="resultTable">
+          {activeCategory &&
+              <table>
+              <thead>
+                  <tr>
+                      <th>Severity</th>
+                      <th>Rule: Message</th>
+                      <th>Code Lines</th>
+                      <th>Violation Info</th>
+                  </tr>
+              </thead>
+              <tbody>
+              {activeCategory.violations.map((violation, index) => {
+                  return (
+                      <tr key={index}>
+                          <td>{violation.severity}</td>
+                          <td className="message">{violation.ruleName}: {violation.message}</td>
+                          <td>{violation.line}-{violation.endLine}</td>
+                          <td><a href={violation.url} target="_blank" rel="noreferrer">More Info</a></td>
+                      </tr>
+                  )
+              })}
+              </tbody>
+          </table>
+          }
+        </section>
+      </div>
+      }
+      {fileName === "Choose a File" &&
+      <section className="help">
+        <h2>How to use this tool</h2>
+        <ol>
+          <li>Go to this <a rel="noreferrer" href="https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_code_analyzer_scan.htm" target="_blank">Link</a>
+          </li>
+          <li>Follow the steps but <span class="emphasize">Except save as json instead of csv</span></li>
+          <li>example: <div class="code">sfdx scanner:run --format=json --outfile=CodeAnalyzerFull.json --target="./ApexClassToRunAgainst.cls" --projectdir="./"</div></li>
+          <li>Upload the saved json file at the top of this page and view the results!</li>
+        </ol>
       </section>
-      <section className="resultTable">
-        {activeCategory &&
-            <table>
-            <thead>
-                <tr>
-                    <th>Severity</th>
-                    <th>Rule: Message</th>
-                    <th>Code Lines</th>
-                    <th>Violation Info</th>
-                </tr>
-            </thead>
-            <tbody>
-            {activeCategory.violations.map((violation, index) => {
-                return (
-                    <tr key={index}>
-                        <td>{violation.severity}</td>
-                        <td className="message">{violation.ruleName}: {violation.message}</td>
-                        <td>{violation.line}-{violation.endLine}</td>
-                        <td><a href={violation.url} target="_blank" rel="noreferrer">More Info</a></td>
-                    </tr>
-                )
-            })}
-            </tbody>
-        </table>
-        }
-      </section>
+      }
     </div>
   );
 }

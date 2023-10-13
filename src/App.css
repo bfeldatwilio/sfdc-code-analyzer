@@ -8,6 +8,10 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+input[type="file"] {
+  border-bottom: solid 1px #666;
+}
+
 section.header {
   background-color: #333;
   color: #fff;
@@ -71,5 +75,39 @@ tbody > tr > td {
 
 .message {
   width: 50%;
+}
+
+.help {
+  width: 600px;
+  border: solid 1px hsl(287, 100%, 50%);
+  margin: auto;
+  border-radius: 10px;
+  margin-top: 40px;
+  padding: 30px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.help > h2 {
+  margin-bottom: 10px;
+}
+
+.help > ol { 
+  margin-left: 20px;
+}
+
+.help .emphasize {
+  font-weight: bold;
+  color: hsl(287, 100%, 50%);
+}
+
+.help > ol > li {
+  margin-bottom: 10px;
+}
+
+.code {
+  background: #333;
+  font-family: monospace;
+  color: white;
+  padding: 5px;
 }
 
