@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+section.header > div {
+  margin: 10px 0;
+}
+
+section.categories {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+section.categories > div {
+  margin-top: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+section.categories > div.active {
+  background-color: #fff;
+  border-top: solid 2px #333;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin:0 40px;
+}
+
+tr {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+thead > tr > th {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #333;
+  line-height: 1.4;
+  text-transform: uppercase;
+  padding: 21px 0;
+}
+
+th {
+  text-align: left;
+}
+
+tbody > tr > td {
+  color: #666;
+  line-height: 1.4;
+  padding: 7px;
+}
+
+.message {
+  width: 50%;
+}
+
