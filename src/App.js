@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 function App() {
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [count, setCount] = useState(0);
   const [fileName, setFileName] = useState("Choose a File");
 
   useEffect(() => {
@@ -19,8 +20,8 @@ function App() {
 
     reader.onload = function() {
       const contents = JSON.parse(reader.result);
-      console.log(contents);
-      setFileName(contents[0].fileName.split('/').pop());
+      setFileName(contents[0]?.fileName.split('/').pop());
+      setCount(contents[0].violations.length);
       setCategories(createCategories(contents[0].violations));
     };
 
@@ -47,7 +48,7 @@ function App() {
         <input accept="json" type="file" onChange={handleFileChange} />
         <div>
           {fileName !== "Choose a File" && 
-            <span>Violations for {fileName}</span> 
+            <span>Violations for {fileName} ({count})</span> 
         }
         </div>
       </section>
